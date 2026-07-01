@@ -1,0 +1,43 @@
+{
+  "name": "womenwork",
+  "version": "1.0.0",
+  "description": "WomenWork - Remote Job Board and Skill-Up Platform for Homemakers",
+  "private": true,
+  "scripts": {
+    "setup": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "test": "concurrently \"npm run test:frontend\" \"npm run test:backend\"",
+    "test:frontend": "cd frontend && npm run test",
+    "test:backend": "cd backend && npm run test",
+    "lint": "concurrently \"npm run lint:frontend\" \"npm run lint:backend\"",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && npm run lint",
+    "format": "concurrently \"npm run format:frontend\" \"npm run format:backend\"",
+    "format:frontend": "cd frontend && npm run format",
+    "format:backend": "cd backend && npm run format",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "remote-jobs",
+    "women-empowerment",
+    "skill-development",
+    "homemakers",
+    "job-board"
+  ],
+  "author": "WomenWork Team",
+  "license": "MIT"
+}
