@@ -1,69 +1,38 @@
-# WomenWork - Root .gitignore
-
-# Environment variables
-.env
-.env.local
-.env.*.local
-.env.production.local
-
-# Dependencies
+# Node / frontend
 node_modules/
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
-# Build outputs
 dist/
 build/
-.next/
-out/
-
-# IDE & Editor
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-*.iml
-.emacs.desktop
-.emacs.desktop.lock
-
-# Logs
-logs/
+coverage/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-lerna-debug.log*
+pnpm-debug.log*
+*.tsbuildinfo
+.vite/
+.cache/
+.eslintcache
+.parcel-cache/
 
-# Testing
-coverage/
-.nyc_output/
-jest-coverage/
+# Environment files
+.env
+.env.*
+!.env.example
+!**/.env.example
+!.env.*.example
+!**/.env.*.example
 
-# OS
+# Frontend local config
+frontend/.env
+frontend/.env.local
+frontend/.env.*
+!frontend/.env.example
+
+# Editor / OS
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
-
-# Docker
-.docker/
-docker-compose.override.yml
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# Temp files
-tmp/
-temp/
+*.swp
+*.swo
 *.tmp
-
-# IDE specific
-.eslintcache
-.prettierignore
-
-# OS temp files
-.cache/
-._*

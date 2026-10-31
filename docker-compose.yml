@@ -1,40 +1,38 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  # PostgreSQL Database
   postgres:
     image: postgres:15-alpine
     container_name: womenwork_postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: womenwork_db
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me}
+      POSTGRES_DB: ${POSTGRES_DB:-womenwork_db}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
       - womenwork_network
 
-  # Backend API
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     container_name: womenwork_backend
     environment:
-      NODE_ENV: development
-      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/womenwork_db
-      PORT: 5000
-      JWT_SECRET: dev_secret_key_min_32_characters_long
-      FRONTEND_URL: http://localhost:5173
+      NODE_ENV: ${NODE_ENV:-development}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:${POSTGRES_PASSWORD:-change_me}@postgres:5432/${POSTGRES_DB:-womenwork_db}}
+      PORT: ${PORT:-5000}
+      JWT_SECRET: ${JWT_SECRET:-replace_with_a_secure_secret}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5173}
     ports:
-      - "5000:5000"
+      - "${PORT:-5000}:5000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -45,14 +43,14 @@ services:
       - womenwork_network
     command: npm run dev
 
-  # Frontend
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: womenwork_frontend
     environment:
-      VITE_API_URL: http://localhost:5000/api
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:5000/api}
+      VITE_APP_NAME: ${VITE_APP_NAME:-WomenWork}
     ports:
       - "5173:5173"
     depends_on:
