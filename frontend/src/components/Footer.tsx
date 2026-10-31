@@ -4,52 +4,55 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gray-900 text-gray-300 mt-20">
+    <footer className="mt-24 bg-slate-950 text-slate-300">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
+        <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">WomenWork</h3>
-            <p className="text-sm">Empowering homemakers through remote work opportunities.</p>
+            <div className="mb-4 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 via-indigo-500 to-pink-500 font-bold text-white">
+                W
+              </div>
+              <div>
+                <div className="text-lg font-bold text-white">WomenWork</div>
+              </div>
+            </div>
+            <p className="max-w-xs text-sm leading-6 text-slate-400">
+              Empowering homemakers and flexible professionals through meaningful remote work, upskilling, and career confidence.
+            </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="/" className="hover:text-white transition">Home</a></li>
-              <li><a href="/jobs" className="hover:text-white transition">Jobs</a></li>
-              <li><a href="/courses" className="hover:text-white transition">Courses</a></li>
-              <li><a href="/dashboard" className="hover:text-white transition">Dashboard</a></li>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-white">Quick links</h4>
+            <ul className="space-y-3 text-sm text-slate-400">
+              <li><a href="/" className="transition hover:text-white">Home</a></li>
+              <li><a href="/jobs" className="transition hover:text-white">Jobs</a></li>
+              <li><a href="/courses" className="transition hover:text-white">Courses</a></li>
+              <li><a href="/dashboard" className="transition hover:text-white">Dashboard</a></li>
             </ul>
           </div>
 
-          {/* Support */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Support</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition">Help Center</a></li>
-              <li><a href="#" className="hover:text-white transition">Contact Us</a></li>
-              <li><a href="#" className="hover:text-white transition">FAQ</a></li>
-              <li><a href="#" className="hover:text-white transition">Terms & Conditions</a></li>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-white">Support</h4>
+            <ul className="space-y-3 text-sm text-slate-400">
+              <li><a href="#" className="transition hover:text-white">Help Center</a></li>
+              <li><a href="#" className="transition hover:text-white">Contact Us</a></li>
+              <li><a href="#" className="transition hover:text-white">FAQs</a></li>
+              <li><a href="#" className="transition hover:text-white">Privacy</a></li>
             </ul>
           </div>
 
-          {/* Social */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Follow Us</h4>
-            <div className="flex gap-4">
-              <a href="#" className="hover:text-white transition">Twitter</a>
-              <a href="#" className="hover:text-white transition">LinkedIn</a>
-              <a href="#" className="hover:text-white transition">Facebook</a>
-              <a href="#" className="hover:text-white transition">Instagram</a>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-white">Follow us</h4>
+            <div className="flex flex-wrap gap-3 text-sm text-slate-400">
+              <a href="#" className="rounded-full border border-slate-700 px-3 py-2 transition hover:border-violet-400 hover:text-white">LinkedIn</a>
+              <a href="#" className="rounded-full border border-slate-700 px-3 py-2 transition hover:border-violet-400 hover:text-white">Instagram</a>
+              <a href="#" className="rounded-full border border-slate-700 px-3 py-2 transition hover:border-violet-400 hover:text-white">Facebook</a>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-700 pt-8">
-          <p className="text-sm text-center">© {currentYear} WomenWork. All rights reserved.</p>
+        <div className="mt-10 border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
+          © {currentYear} WomenWork. All rights reserved.
         </div>
       </div>
     </footer>

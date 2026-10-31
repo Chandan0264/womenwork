@@ -11,6 +11,7 @@ const Courses: React.FC = () => {
       duration: '4 weeks',
       rating: 4.8,
       enrolled: 1250,
+      accent: 'from-violet-500 to-indigo-500',
     },
     {
       id: 2,
@@ -20,6 +21,7 @@ const Courses: React.FC = () => {
       duration: '8 weeks',
       rating: 4.9,
       enrolled: 980,
+      accent: 'from-pink-500 to-rose-400',
     },
     {
       id: 3,
@@ -29,44 +31,49 @@ const Courses: React.FC = () => {
       duration: '3 weeks',
       rating: 4.7,
       enrolled: 2100,
+      accent: 'from-cyan-500 to-sky-500',
     },
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-12">
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">Skill Development Courses</h1>
-          <p className="text-gray-600 text-lg">Learn new skills and advance your career</p>
+    <div className="min-h-screen bg-slate-50">
+      <div className="container mx-auto px-4 py-12 md:py-16">
+        <div className="mb-10">
+          <span className="section-tag">Skill development</span>
+          <h1 className="mt-5 text-4xl font-black tracking-tight text-slate-900 md:text-5xl">Learn practical skills for flexible work.</h1>
+          <p className="mt-4 max-w-2xl text-lg text-slate-600">
+            Explore short, beginner-friendly courses designed to build confidence and prepare you for remote work opportunities.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {courses.map((course) => (
-            <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-              <div className="bg-gradient-to-r from-blue-500 to-purple-600 h-40"></div>
+            <div key={course.id} className="premium-card overflow-hidden transition duration-200 hover:-translate-y-1 hover:shadow-xl">
+              <div className={`h-40 bg-gradient-to-br ${course.accent}`} />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">By {course.instructor}</p>
-                <div className="space-y-3 mb-6">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Duration:</span>
-                    <span className="font-semibold">{course.duration}</span>
+                <div className="mb-3 flex items-center justify-between gap-3">
+                  <span className="rounded-full bg-violet-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] text-violet-700">
+                    {course.level}
+                  </span>
+                  <span className="text-sm font-semibold text-amber-500">⭐ {course.rating}</span>
+                </div>
+
+                <h3 className="text-2xl font-bold text-slate-900">{course.title}</h3>
+                <p className="mt-2 text-sm font-medium text-slate-500">By {course.instructor}</p>
+
+                <div className="mt-5 space-y-3 text-sm text-slate-600">
+                  <div className="flex items-center justify-between">
+                    <span>Duration</span>
+                    <span className="font-semibold text-slate-900">{course.duration}</span>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Level:</span>
-                    <span className="font-semibold capitalize">{course.level}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Rating:</span>
-                    <span className="font-semibold">⭐ {course.rating}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Enrolled:</span>
-                    <span className="font-semibold">{course.enrolled.toLocaleString()}</span>
+                  <div className="flex items-center justify-between">
+                    <span>Enrolled</span>
+                    <span className="font-semibold text-slate-900">{course.enrolled.toLocaleString()}</span>
                   </div>
                 </div>
-                <button className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                  Enroll Now
+
+                <button className="premium-button mt-6 w-full rounded-xl px-4 py-3 text-sm">
+                  Enroll now
                 </button>
               </div>
             </div>
